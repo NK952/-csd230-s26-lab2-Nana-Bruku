@@ -30,4 +30,6 @@ public abstract class PublicationEntity extends ProductEntity {
     public void setPrice(double price) { this.price = price; }
     public int getCopies() { return copies; }
     public void setCopies(int copies) { this.copies = copies; }
+
+    public abstract boolean getAuthors();
 }

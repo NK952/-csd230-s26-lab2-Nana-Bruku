@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${magazine.id != null} ? 'Edit Magazine' : 'Add New Magazine'">Magazine Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0" th:text="${magazine.id != null} ? 'Edit Magazine' : 'Add New Magazine'">Magazine Details</h4>
+            </div>
+            <div class="card-body">
+                <form th:action="@{/magazines/save}" th:object="${magazine}" method="post">
+
+                    <input type="hidden" th:field="*{id}" />
+
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Magazine Title</label>
+                        <input type="text" id="title" th:field="*{title}" class="form-validation form-control" required placeholder="e.g. National Geographic"/>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Price ($)</label>
+                        <input type="number" id="price" step="0.01" min="0.00" th:field="*{price}" class="form-control" required/>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="copies" class="form-label">Available Copies</label>
+                        <input type="number" id="copies" min="0" th:field="*{copies}" class="form-control" required/>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="orderQty" class="form-label">Order Quantity</label>
+                        <input type="number" id="orderQty" min="0" th:field="*{orderQty}" class="form-control" required/>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="currentIssue" class="form-label">Current Issue Date</label>
+                        <input type="datetime-local" id="currentIssue" th:field="*{currentIssue}" class="form-control" required/>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <a href="/magazines" class="btn btn-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-success" th:text="${magazine.id != null} ? 'Update Magazine' : 'Save Magazine'">Save</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

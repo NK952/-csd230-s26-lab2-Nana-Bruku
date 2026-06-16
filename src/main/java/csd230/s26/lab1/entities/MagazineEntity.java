@@ -16,6 +16,11 @@ public class MagazineEntity extends PublicationEntity {
         this.currentIssue = LocalDateTime.now();
     }
 
+    @Override
+    public boolean getAuthors() {
+        return false;
+    }
+
     public MagazineEntity(int orderQty, LocalDateTime currentIssue, String title, double price, int copies) {
         super(title, price, copies);
         this.orderQty = orderQty;
@@ -23,11 +28,21 @@ public class MagazineEntity extends PublicationEntity {
     }
 
     // Getters and Setters
-    public int getOrderQty() { return orderQty; }
-    public void setOrderQty(int orderQty) { this.orderQty = orderQty; }
+    public int getOrderQty() {
+        return orderQty;
+    }
 
-    public LocalDateTime getCurrentIssue() { return currentIssue; }
-    public void setCurrentIssue(LocalDateTime currentIssue) { this.currentIssue = currentIssue; }
+    public void setOrderQty(int orderQty) {
+        this.orderQty = orderQty;
+    }
+
+    public LocalDateTime getCurrentIssue() {
+        return currentIssue;
+    }
+
+    public void setCurrentIssue(LocalDateTime currentIssue) {
+        this.currentIssue = currentIssue;
+    }
 
     @Override
     public boolean equals(Object o) {
